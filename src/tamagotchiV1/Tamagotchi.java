@@ -6,7 +6,6 @@ public class Tamagotchi {
 	private int energie; // sa energie
 	private float poids; // son poids en kg
 	private Boolean status; // son status de vie (vie or mort)
-
 	/**
 	 * Appel au constructeur par les params de Tamagochi
 	 * 
@@ -17,7 +16,6 @@ public class Tamagotchi {
 		this.poids = poids;
 		this.status = status;
 	}
-
 	/**
 	 * Appel au constructeur par default de Tamagochi
 	 * 
@@ -28,7 +26,6 @@ public class Tamagotchi {
 		this.poids = 14;
 		this.status = true;
 	}
-
 	// getter et setter
 	public String getNom() {
 		return nom;
@@ -61,10 +58,12 @@ public class Tamagotchi {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
+/**
+ *  Tamagochi augumente sa poids quand il mange chaque fois
+ * @param fois
+ */
 	public void manger(int fois) {
 		if (status == true) {
-			// Tamagochi augumente sa poids quand il mange chaque fois
 			// son poids actuel
 			poids = getPoids();
 			// son poids après avoir mangé
@@ -83,7 +82,9 @@ public class Tamagotchi {
 			System.out.println("Quel dommage, votre Tamagotchi est mort! Creer un autre, stp");
 		}
 	}
-
+/**
+ * Tamagotchi dort pour recharger sa energie 
+ */
 	public void dormir() {
 		if (status == true) {
 			setEnergie(10);
@@ -94,7 +95,10 @@ public class Tamagotchi {
 			System.out.println("Quel dommage, votre Tamagotchi est mort! Creer un autre, stp");
 		}
 	}
-
+/**
+ * Tamagotchi perd sa energie quand il joue
+ * @param fois 
+ */
 	public void jouer(int fois) {
 		energie = getEnergie();
 		energie = energie - fois;
@@ -109,7 +113,9 @@ public class Tamagotchi {
 			setStatus(true);
 		}
 	}
-
+	/**
+	 * Affichage les infos actualités
+	 */
 	public void affiche() {
 		System.out.println("Voici les infos actualitées de votre Tamagotchi: ");
 		System.out.println("Son nom: " + getNom());
