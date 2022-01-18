@@ -6,6 +6,7 @@ public class Tamagotchi {
 	private int energie; // sa energie
 	private float poids; // son poids en kg
 	private Boolean status; // son status de vie (vie or mort)
+	
 	/**
 	 * Appel au constructeur par les params de Tamagochi
 	 * 
@@ -21,9 +22,10 @@ public class Tamagotchi {
 	 * 
 	 */
 	public Tamagotchi() {
-		this.nom = "toto";
-		this.energie = 10;
-		this.poids = 14;
+		System.out.println("Saisissez le nom de votre tamagotchi,svp.");
+		this.nom = Clavier.lireString();
+		this.energie = 1;
+		this.poids = 1;
 		this.status = true;
 	}
 	// getter et setter
@@ -102,12 +104,15 @@ public class Tamagotchi {
 	public void jouer(int fois) {
 		energie = getEnergie();
 		energie = energie - fois;
-		if (energie < 0) {
-			System.out.println("Votre tamagotchi a besoin de dormir");
+		if (energie <= 0) {
+			System.out.println("Votre tamagotchi a zero d'energie");
 			setEnergie(0);
 			// Tamagochi murt
 			setStatus(false);
-		} else {
+		} else if (energie > 0 && energie <= 2) {
+			System.out.println("Votre tamagotchi a besoin de dormir");
+		}
+		else {
 			System.out.println("Bien joué!L'énergie de votre tamagochi reste: " + energie);
 			// Tamagochi vie
 			setStatus(true);
@@ -116,15 +121,23 @@ public class Tamagotchi {
 	/**
 	 * Affichage les infos actualités
 	 */
+	
 	public void affiche() {
+		System.out.println();
+		System.out.println("-----------(@_@)-----------");
 		System.out.println("Voici les infos actualitées de votre Tamagotchi: ");
 		System.out.println("Son nom: " + getNom());
 		System.out.println("Sa energie: " + getEnergie());
-		System.out.println("Son poids: " + getPoids());
+		System.out.println("Son poids: " + getPoids() + " kg");
+		
 		if (getStatus() == true) {
 			System.out.println("Votre Tamagotchi vie");
 		} else {
-			System.out.println("Votre Tamagotchi est mort");
+			System.out.println("Votre Tamagotchi est mort. Game Over T_T ");
 		}
+		System.out.println();
+		System.out.println("Attention! " + getNom() +" va mourir si sa energie est 0 ou si son poids est depassé 15 kg ");
+		System.out.println("-----------(@_@)-----------");
+		System.out.println();
 	}
 }
